@@ -1,6 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 
+function getRandom() {
+  var headers = { 'Authorization': process.env.REDDIT, 'User-Agent': 'GuessIt by Bandm_' } 
+  fetch('https://oauth.reddit.com/r/theonion/random', headers=headers)
+    .then(res => res.json())
+    .then(data => console.log(data));
+}
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +24,9 @@ function App() {
         >
           Learn React
         </a>
+        {
+          getRandom()
+        }
       </header>
     </div>
   );
